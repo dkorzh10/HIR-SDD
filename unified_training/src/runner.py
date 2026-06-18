@@ -10,7 +10,6 @@ from torch.utils.data.distributed import DistributedSampler
 from typing import Dict, Any, List, Optional, Union
 
 from .utils.config import load_config
-from .models.dummy.model import DummyModel
 
 # Loggers
 from .loggers.hard_label_logger import HardLabelLogger
@@ -170,9 +169,7 @@ class Runner:
     def _build_model(self):
         model_cfg = self.config.get("Model", {})
         model_name = model_cfg.get("model_name")
-        if model_name == "dummy":
-            return DummyModel(model_cfg)
-        elif model_name == "salmon":
+        if model_name == "salmon":
             from .models.salmon import SalmonModel
             return SalmonModel(model_cfg)
         elif model_name == "conv_audio_classifier":

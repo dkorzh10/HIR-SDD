@@ -44,44 +44,27 @@ class AudioDataset(Dataset):
 
 
     def _load_data(self, max_samples: Optional[int]):
-        if self.data_path == "dummy":
-            self.samples = [
-                {
-                    "audio_id": f"dummy_{i}",
-                    "original_path": f"/tmp/dummy_audio_{i}.wav",
-                    "is_bonafide": i % 2 == 0,
-                    "reasons": {"strange_voice": True} if i % 2 != 0 else None,
-                    "reasoning": "This sounds fake." if i % 2 != 0 else "This sounds real."
-                }
-                for i in range(100)
-            ]
-            # Continue to max_samples slicing
-        else:
-            try:
-                with open(self.data_path, 'r') as f:
-                    if self.data_path.endswith('.json'):
-                        data = json.load(f)
-                        # If list, assign directly
-                        if isinstance(data, list):
-                            self.samples = data
-                        # If dict (e.g. wrapper), might be data['samples'] or similar - assuming list for now based on description
-                        else:
-                            print(f"Warning: Unexpected JSON format in {self.data_path}. Expecting list.")
-                            self.samples = []
-                    elif self.data_path.endswith('.jsonl'):
-                        self.samples = [json.loads(line) for line in f]
-            except FileNotFoundError:
-                print(f"Warning: Dataset file {self.data_path} not found. Using empty dataset.")
-                self.samples = []
+        try:
+            with open(self.data_path, 'r') as f:
+                if self.data_path.endswith('.json'):
+                    data = json.load(f)
+                    # If list, assign directly
+                    if isinstance(data, list):
+                        self.samples = data
+                    # If dict (e.g. wrapper), might be data['samples'] or similar - assuming list for now based on description
+                    else:
+                        print(f"Warning: Unexpected JSON format in {self.data_path}. Expecting list.")
+                        self.samples = []
+                elif self.data_path.endswith('.jsonl'):
+                    self.samples = [json.loads(line) for line in f]
+        except FileNotFoundError:
+            print(f"Warning: Dataset file {self.data_path} not found. Using empty dataset.")
+            self.samples = []
 
         if max_samples:
             self.samples = self.samples[:max_samples]
 
     def _load_audio(self, path: str):
-        if path.startswith("/tmp/dummy"):
-            # Return dummy tensor
-            return torch.randn(1, 16000), 16000
-        
         if not os.path.exists(path):
             # Missing audio should be skipped, not silently converted to 1s silence.
             if self._missing_audio_warns < 20:

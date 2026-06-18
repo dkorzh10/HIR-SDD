@@ -2,7 +2,6 @@
 import os
 from typing import Optional
 
-_DUMMY_DURATION_SEC = 1.0
 _DEFAULT_MISSING_SEC = 1.0
 
 
@@ -10,13 +9,9 @@ def get_audio_duration_sec(path: str) -> float:
     """
     Get audio duration in seconds from file path.
     Uses metadata only - no full audio read. Instant.
-    - Dummy paths (/tmp/dummy...): return _DUMMY_DURATION_SEC
     - File not found: return _DEFAULT_MISSING_SEC
     - Real files: soundfile header (or os.path.getsize fallback)
     """
-    if path.startswith("/tmp/dummy"):
-        return _DUMMY_DURATION_SEC
-
     if not os.path.exists(path):
         return _DEFAULT_MISSING_SEC
 

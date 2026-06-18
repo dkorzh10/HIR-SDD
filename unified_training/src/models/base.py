@@ -9,7 +9,6 @@ class ModelType(Enum):
     FLAMINGO = "flamingo"
     QWEN_AUDIO = "qwen_audio"
     CONV_AUDIO_CLASSIFIER = "conv_audio_classifier"
-    DUMMY = "dummy"
 
 class Model(ABC, torch.nn.Module):
     def __init__(self, config: Dict[str, Any]):
@@ -49,7 +48,7 @@ class Model(ABC, torch.nn.Module):
     
     def get_tokenizer(self):
         """
-        Return tokenizer for length/counting. None if not available (e.g. DummyModel).
+        Return tokenizer for length/counting. None if not available.
         Used by distillation for token-based length filtering.
         """
         return None
@@ -83,7 +82,7 @@ class Model(ABC, torch.nn.Module):
                 return len(ids)
             if hasattr(ids, "shape"):
                 return ids.shape[0] if ids.ndim > 0 else 0
-        return max(0, len(text) // 4)  # fallback for DummyModel
+        return max(0, len(text) // 4)  # crude fallback when no tokenizer is available
 
     def swap_weights(self):
         """
