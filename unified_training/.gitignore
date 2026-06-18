@@ -1,0 +1,6 @@
+outputs/
+.venv/
+.pytest_cache/
+.vscode/
+docs/reports/
+jobs/

@@ -1,0 +1,29 @@
+{
+  "antispoofing": [
+    "<Audio> You are an audio security expert specialized in classifying audios as Real or Fake. You are tasked with detecting whether an audio is Real (genuine) or Fake (generated artificially). Is the provided audio Real or Fake? Give response in format: Final Answer: [Real/Fake]. Do not use markdown or any other formatting and output the answer as specified.",
+    
+    "<Audio> You are an audio security expert. Determine if this audio is Real or Fake. Analyze the audio and provide your final determination using this format: Final Answer: [Real/Fake]",
+    
+    "<Audio> You are an audio security expert specialized in classifying audios as Real or Fake. Is this audio Real (genuine) or Fake (deepfake)? Final Answer: [Real/Fake]",
+    
+    "<Audio> Determine if this audio is Real or Fake using forensic analysis. Perform a systematic audio forensic analysis: 1. SPECTRAL ANALYSIS: Examine spectrogram for unnatural patterns, spectral discontinuities, or inconsistent formant structures. 2. PROSODY PATTERNS: Analyze pitch contours, speech rate consistency, and naturalness of intonation. 3. ARTIFACT DETECTION: Look for digital artifacts at segment boundaries, unnatural silences, or inconsistent background noise. 4. VOICE QUALITY: Assess breathiness, vibrato patterns, and natural voice tremor. 5. ACOUSTIC CONSISTENCY: Check for consistent reverberation patterns and environmental noise. After analysis, provide: Final Answer: [Real/Fake]",
+    
+    "<Audio> Analyze this audio for authenticity. Check prosody, artifacts, voice quality, and acoustic consistency. Provide your final determination: Final Answer: [Real/Fake]",
+    
+    "<Audio> You are tasked with detecting whether an audio is Real (genuine) or Fake (generated artificially). Examine the audio for: spectral patterns, prosody naturalness, digital artifacts, voice quality, and acoustic consistency. Final Answer: [Real/Fake]",
+    
+    "<Audio> Audio security expert task: Is this audio Real or Fake? Analyze for unnatural patterns, robotic transitions, editing artifacts, and synthesized characteristics. Final Answer: [Real/Fake]",
+    
+    "<Audio> Classify this audio as Real (genuine) or Fake (artificially generated). Look for spectral discontinuities, unnatural intonation, digital artifacts, and inconsistent acoustic properties. Final Answer: [Real/Fake]",
+    
+    "<Audio> Perform antispoofing detection. Examine: 1) Spectrogram patterns 2) Pitch contours 3) Segment boundaries 4) Voice tremor 5) Background consistency. Determine: Final Answer: [Real/Fake]",
+    
+    "<Audio> Is this audio Real or Fake? Check for artificial generation indicators: unnatural formants, smooth transitions, editing artifacts, synthesized voice quality. Final Answer: [Real/Fake]"
+  ]
+}
+
+
+
+
+
+

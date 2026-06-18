@@ -1,0 +1,84 @@
+General:
+    output_dir: ./outputs/conv_audio_classifier_hard_label_sft_focal_loss_mel_en_downsampled
+
+Model:
+    model_name: conv_audio_classifier
+    # ckpt: ""  # Path to checkpoint for resume or test
+
+    amp: true
+    additional_kwargs:
+        conv_audio_classifier:
+            target_duration_sec: 3.0
+            sample_rate: 16000
+            feature_type: mel  # mel or lfcc (antispoofing-standard frontend)
+            n_mels: 80
+            n_lfcc: 60
+
+    use_focal_loss: true
+    focal_gamma: 2.0
+    focal_alpha: null
+
+Logger:
+    log_freq: 10
+
+Datasets:
+    dataset_train_path: "./artifacts/data/meta_datasets/hard_label/hard_label_train_315k_downsampled_en.json"
+    dataset_test_path: ./artifacts/data/meta_datasets/hard_label/hard_label_test_140k.json
+
+    max_train_samples: null
+    max_test_samples: 20000
+
+    use_oversampling: false
+    # use_class_weights: true # deprecated
+    shuffle: true
+
+    # Balance loss by inverse dataset label proportion (once per epoch).
+    # When true, per-sample loss is weighted so classes contribute equally.
+    loss_weight_based_on_dataset_label: true
+
+Prompts:
+    reasoning_prompts: "src/prompts/antispoofing_reasoning_prompt.json"
+    hard_label_prompts: "src/prompts/antispoofing_prompt.json"
+
+Runner:
+    type: train  # train | test
+    trainer: SFT  # SFT | GRPO | Distillation
+
+    num_gpus: 2
+    num_workers: 32
+
+    SFT:
+        task_type: hard_label
+        batch_size_train: 128
+        batch_size_eval: 32
+        accum_grad_iters: 1
+
+        num_epochs: 1
+        iters_per_epoch: 2000
+        iters_per_epoch_val: null
+
+        generation:
+            max_new_tokens: 32
+            num_beams: 1
+            do_sample: false
+
+        optimizator:
+            beta2: 0.999
+            init_lr: 0.001
+            min_lr: 1.0e-05
+            warmup_start_lr: 1.0e-08
+            warmup_steps: 100
+            weight_decay: 0.05
+
+    Test:
+        model_format: hard_label
+        dataset_format: hard_label
+        batch_size: 32
+        save_all_predictions: true
+        extract_confidence: false
+        # Pass full-length (padded) audio to generate() for overlapping-window + mean (default true).
+        # Set to false to use single 3s segment per sample (collator VAD+crop) like training.
+        # conv_audio_full_wav_at_test: true
+        generation:
+            max_new_tokens: 32
+            do_sample: false

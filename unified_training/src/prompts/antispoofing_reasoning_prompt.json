@@ -1,0 +1,23 @@
+{
+  "antispoofing": [
+    "<Audio> You are an audio security expert specialized in classifying audios as spoofed or real. Analyze the audio carefully. First, think step-by-step about the audio characteristics in <think> tags. Then, identify any specific indicators of spoofing from this list: ['OTHER', 'UNNATURAL_PAUSES', 'MONOTONY_OF_STYLE', 'STRANGE_VOICE', 'STRANGE_INTONATION', 'INCORRECT_WORD_STRESS', 'STRANGE_ACCENT', 'INCORRECT_ABBREVIATIONS', 'TOO_LONG_WITH_NO_PAUSE']. Provide these reasons in a list within <reasons> tags. Finally, give your verdict in <answer> tags as either 'Fake' or 'Real'.\n\nFormat:\n<think>analysis here</think><reasons>['REASON_1', 'REASON_2']</reasons><answer>Fake/Real</answer>",
+
+    "<Audio> Determine if this audio is fake (deepfake) or real (genuine). Listen for artifacts like robotic voice, unnatural pauses, or strange intonation. \n1. Provide your detailed analysis in <think>...</think>.\n2. Select applicable reasons from: ['OTHER', 'UNNATURAL_PAUSES', 'MONOTONY_OF_STYLE', 'STRANGE_VOICE', 'STRANGE_INTONATION', 'INCORRECT_WORD_STRESS', 'STRANGE_ACCENT', 'INCORRECT_ABBREVIATIONS', 'TOO_LONG_WITH_NO_PAUSE'] and put them in <reasons>[...]</reasons>. If real, the list should be empty.\n3. State the final classification in <answer>...</answer>.",
+
+    "<Audio> Perform forensic audio analysis. Is this audio real or fake? \nStep 1: Analyze spectral consistency, prosody, and artifacts. Write this in <think> tags.\nStep 2: List detected anomalies in <reasons> tags (e.g., ['STRANGE_VOICE', 'UNNATURAL_PAUSES']). Use [] if none.\nStep 3: Conclude with <answer>Fake</answer> or <answer>Real</answer>.",
+
+    "<Audio> Audio Authentication Task. \nAnalyze the speech for signs of synthesis such as metallic sounds, lack of breath, or unnatural rhythm. \nOutput your reasoning in <think>...</think> tags.\nIdentify specific flaws: ['UNNATURAL_PAUSES', 'MONOTONY_OF_STYLE', 'STRANGE_VOICE', 'STRANGE_INTONATION', 'INCORRECT_WORD_STRESS', 'STRANGE_ACCENT', 'INCORRECT_ABBREVIATIONS', 'TOO_LONG_WITH_NO_PAUSE']. Output as <reasons>['FLAW_1']</reasons>.\nFinal verdict: <answer>Fake/Real</answer>.",
+
+    "<Audio> You are an expert in deepfake detection. \nExamine the provided audio. \n<think> Describe your observations regarding voice quality, background noise, and speech patterns. </think>\n<reasons> List valid indicators of spoofing found (e.g., ['STRANGE_VOICE', 'OTHER']). Return [] if genuine. </reasons>\n<answer> Classify as 'Fake' or 'Real'. </answer>",
+
+    "<Audio> Listen to the audio and determine if it is AI-generated (Fake) or human (Real). Focus on speech naturalness, breath sounds, and emotion.\nFormat your response:\n<think>YOUR_ANALYSIS</think>\n<reasons>['REASON_1', 'REASON_2'] (choose from ['UNNATURAL_PAUSES', 'MONOTONY_OF_STYLE', 'STRANGE_VOICE', 'STRANGE_INTONATION', 'INCORRECT_WORD_STRESS', 'STRANGE_ACCENT', 'INCORRECT_ABBREVIATIONS', 'TOO_LONG_WITH_NO_PAUSE', 'OTHER'])</reasons>\n<answer>Fake/Real</answer>",
+
+    "<Audio> Is this audio genuine (Real) or a deepfake (Fake)? Check for artifacts like unnatural silence, metallic artifacts, or lack of breathing.\n1. Think through the evidence: <think>...</think>\n2. Cite reasons if fake: <reasons>...</reasons>\n3. Verdict: <answer>...</answer>",
+
+    "<Audio> Task: Audio Deepfake Detection.\nAnalyze: Pitch, timbre, and prosody.\nInstructions:\n- Write your chain of thought in <think> tags.\n- If you find anomalies, list them in <reasons> from the standard set (e.g., ['STRANGE_INTONATION', 'MONOTONY_OF_STYLE']).\n- If the audio is natural, <reasons> should be [].\n- Final output must be <answer>Fake</answer> or <answer>Real</answer>.",
+
+    "<Audio> Evaluate the authenticity of this recording. Look for inconsistencies in background noise or digital artifacts in the voice.\n<think> Detailed analysis of acoustic properties... </think>\n<reasons> List detected fake clues (e.g. ['STRANGE_VOICE', 'INCORRECT_WORD_STRESS']). </reasons>\n<answer>Fake/Real</answer>",
+
+    "<Audio> Classify audio: Fake vs Real. \nFirst, perform a qualitative analysis of the speech signal in <think>...</think>.\nNext, categorize any detected faults into the following categories: ['OTHER', 'UNNATURAL_PAUSES', 'MONOTONY_OF_STYLE', 'STRANGE_VOICE', 'STRANGE_INTONATION', 'INCORRECT_WORD_STRESS', 'STRANGE_ACCENT', 'INCORRECT_ABBREVIATIONS', 'TOO_LONG_WITH_NO_PAUSE']. Output as <reasons>[...]</reasons>.\nFinally, state: <answer>Fake</answer> or <answer>Real</answer>."
+  ]
+}

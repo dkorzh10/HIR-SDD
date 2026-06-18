@@ -1,0 +1,98 @@
+model:
+  llama_path: /path/to/checkpoints/llm/vicuna-7b-v1.1
+  whisper_path: /path/to/checkpoints/whisper/whisper-large-v2
+  beats_path: ''
+  ckpt: './experiments/salmon/experiments/lora_128_balanced/runs/202510260452/checkpoint_24.pth'
+  freeze_whisper: true
+  freeze_beats: true
+  use_speech_Qformer: true
+  freeze_speech_QFormer: false
+  window_level_Qformer: true
+  num_speech_query_token: 1
+  second_per_window: 0.333333
+  second_stride: 0.333333
+  speech_llama_proj_model: ''
+  freeze_speech_llama_proj: false
+  lora: true
+  lora_rank: 128
+  lora_alpha: 256
+  lora_dropout: 0.1
+  multi_prompt: true
+  prompt_template: 'USER: {}
+
+    ASSISTANT:'
+  prompt_path: src/prompts/antispoofing_prompt.json
+  test_prompt_path: src/prompts/antispoofing_prompt.json
+  max_txt_len: 50
+  end_sym: </s>
+  use_class_weights: true
+
+datasets:
+  train_ann_path: /path/to/data/salmonn/train_salmonn_balanced_520K.json
+  valid_ann_path: /path/to/data/salmonn/valid_salmonn_163K.json
+  test_ann_path: /path/to/data/salmonn/test_salmonn_140K.json
+  whisper_path: /path/to/checkpoints/whisper/whisper-large-v2
+  max_train_samples: null
+  max_valid_samples: 10000
+  max_test_samples: null
+  
+run:
+  seed: 42
+  output_dir: ./experiments/salmon/experiments/salmon_grpo_debug/runs
+  output_folder: ''
+  evaluate: false
+  log_freq: 50
+  epoch_based: false
+  iters_per_epoch: 1157
+  accum_grad_iters: 2
+  batch_size_train: 4
+  batch_size_eval: 4
+  num_workers: 1
+  device: cuda
+  use_distributed: true
+  amp: false
+  world_size: 1
+  dist_url: env://
+  optims:
+    max_epoch: 3
+    warmup_steps: 200
+    warmup_start_lr: 1.0e-06
+    init_lr: 2.0e-05
+    min_lr: 1.0e-06
+    weight_decay: 0.05
+    beta2: 0.999
+  
+  kl_coef: 0.1
+  judge_weight: 0.5
+
+  mls:
+    num_gpus: 1
+
+  dist_backend: nccl
+
+generate:
+  max_length: 20
+  min_length: 1
+  num_beams: 1
+  top_p: 0.9
+  temperature: 1.0
+  repetition_penalty: 1.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

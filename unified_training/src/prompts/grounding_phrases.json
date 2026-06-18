@@ -1,0 +1,24 @@
+{
+  "grounding_phrases": [
+    "I noticed a localized cue {region_desc}: {aug_desc}.",
+    "A subtle clue appears {region_desc}, where {aug_desc}.",
+    "Around {region_desc}, the signal sounds like {aug_desc}.",
+    "In {region_desc}, I can hear signs that {aug_desc}.",
+    "One thing that stands out is that {region_desc} has evidence that {aug_desc}.",
+    "There is a short interval {region_desc} where {aug_desc}.",
+    "The acoustic texture shifts {region_desc}; it feels like {aug_desc}.",
+    "A forensic hint is present {region_desc}: {aug_desc}.",
+    "In that region ({region_desc}), it appears that {aug_desc}.",
+    "I would flag {region_desc} because {aug_desc}.",
+    "The middle evidence is that {aug_desc} in {region_desc}.",
+    "A controllable perturbation is noticeable {region_desc}: {aug_desc}.",
+    "Listening carefully, {region_desc} reveals that {aug_desc}.",
+    "There is a detectable artifact {region_desc} where {aug_desc}.",
+    "The clip contains a short section {region_desc} in which {aug_desc}.",
+    "A likely manipulated span is {region_desc}; there {aug_desc}.",
+    "I can point to {region_desc}, where {aug_desc}.",
+    "That area {region_desc} sounds altered, as if {aug_desc}.",
+    "One grounded observation: {region_desc}, {aug_desc}.",
+    "The waveform behavior changes {region_desc}, suggesting {aug_desc}."
+  ]
+}

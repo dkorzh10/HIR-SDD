@@ -1,0 +1,82 @@
+Datasets:
+  dataset_test_path: /path/to/data/hard_label/hard_label_test_140k.json
+  dataset_train_path: /path/to/data/reasoning/reasoning_train_114k.json
+  dataset_val_path: /path/to/data/hard_label/hard_label_val_133k.json
+  max_test_samples: null
+  max_train_samples: null
+  max_valid_samples: 5000
+  shuffle: false
+  use_class_weights: false
+  use_oversampling: false
+General:
+  output_dir: ./experiments/unified_training/outputs/salmon_hard_label_sft
+Logger:
+  log_freq: 10
+Model:
+  additional_kwargs:
+    salmon:
+      freeze_speech_QFormer: false
+      freeze_speech_llama_proj: false
+      freeze_whisper: true
+      num_speech_query_token: 1
+      pretrained_ckpts:
+        beats_path: ''
+        llama_path: /path/to/checkpoints/llm/vicuna-7b-v1.1
+        whisper_path: /path/to/checkpoints/whisper/whisper-large-v2
+      second_per_window: 0.333333
+      second_stride: 0.333333
+      speech_llama_proj_model: ''
+      use_speech_Qformer: true
+      whisper_unfreeze_attention_only: false
+      whisper_unfreeze_last_n_layers: 0
+      window_level_Qformer: true
+  amp: false
+  ckpt: ./experiments/unified_training/outputs/salmon_hard_label_sft/run_2026_02_06_04_59/checkpoints/sft_latest.pt
+  lora:
+    alpha: 32
+    enabled: true
+    lora_dropout: 0.1
+    projections: all
+    rank: 256
+  max_txt_len: 32
+  model_name: salmon
+
+Prompts:
+  hard_label_prompts: src/prompts/antispoofing_prompt.json
+  reasoning_prompts: src/prompts/antispoofing_reasoning_prompt.json
+
+Runner:
+  SFT:
+    accum_grad_iters: 1
+    batch_size_eval: 32
+    batch_size_train: 32
+    generation:
+      do_sample: false
+      max_new_tokens: 32
+      num_beams: 1
+    iters_per_epoch: 1000
+    iters_per_epoch_val: null
+    num_epochs: 10
+    optimizator:
+      beta2: 0.999
+      init_lr: 0.0001
+      min_lr: 1.0e-06
+      warmup_start_lr: 1.0e-08
+      warmup_steps: 200
+      weight_decay: 0.05
+    task_type: hard_label
+  Test:
+    batch_size: 32
+    dataset_format: hard_label
+    extract_confidence: true
+    generation:
+      do_sample: false
+      max_new_tokens: 32
+      num_beams: 1
+      temperature: 1.0
+      top_p: 0.9
+    model_format: hard_label
+    save_all_predictions: true
+  num_gpus: 4
+  trainer: SFT
+  type: test

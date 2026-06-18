@@ -1,0 +1,29 @@
+{
+  "antispoofing": [
+    "<SpeechHere> You are an audio security expert specialized in classifying audios as spoofed or bonafide. You are tasked with detecting whether an audio is spoofed (generated artificially) or bonafide (genuine). Is the provided audio spoof (deepfake) or bonafide (genuine)? Give response in format: Final Answer: [spoof/bonafide]. Do not use markdown or any other formatting and output the answer as specified.",
+    
+    "<SpeechHere> You are an audio security expert. Determine if this audio is spoofed or bonafide. Analyze the audio and provide your final determination using this format: Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> You are an audio security expert specialized in classifying audios as spoofed or bonafide. Is this audio spoof (deepfake) or bonafide (genuine)? Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Determine if this audio is spoofed or bonafide using forensic analysis. Perform a systematic audio forensic analysis: 1. SPECTRAL ANALYSIS: Examine spectrogram for unnatural patterns, spectral discontinuities, or inconsistent formant structures. 2. PROSODY PATTERNS: Analyze pitch contours, speech rate consistency, and naturalness of intonation. 3. ARTIFACT DETECTION: Look for digital artifacts at segment boundaries, unnatural silences, or inconsistent background noise. 4. VOICE QUALITY: Assess breathiness, vibrato patterns, and natural voice tremor. 5. ACOUSTIC CONSISTENCY: Check for consistent reverberation patterns and environmental noise. After analysis, provide: Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Analyze this audio for authenticity. Check prosody, artifacts, voice quality, and acoustic consistency. Provide your final determination: Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> You are tasked with detecting whether an audio is spoofed (generated artificially) or bonafide (genuine). Examine the audio for: spectral patterns, prosody naturalness, digital artifacts, voice quality, and acoustic consistency. Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Audio security expert task: Is this audio spoofed or bonafide? Analyze for unnatural patterns, robotic transitions, editing artifacts, and synthesized characteristics. Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Classify this audio as spoofed (artificially generated) or bonafide (genuine). Look for spectral discontinuities, unnatural intonation, digital artifacts, and inconsistent acoustic properties. Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Perform antispoofing detection. Examine: 1) Spectrogram patterns 2) Pitch contours 3) Segment boundaries 4) Voice tremor 5) Background consistency. Determine: Final Answer: [spoof/bonafide]",
+    
+    "<SpeechHere> Is this audio spoofed or bonafide? Check for artificial generation indicators: unnatural formants, smooth transitions, editing artifacts, synthesized voice quality. Final Answer: [spoof/bonafide]"
+  ]
+}
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+# torch
+# torchaudio
+# torchcodec
+# pytorchvideo
+transformers==4.46.0
+peft
+accelerate
+deepspeed
+sentencepiece
+protobuf
+pyyaml
+pandas
+matplotlib
+scikit-learn
+tqdm
+openai-whisper
+opencv-python-headless
+loguru
+xgrammar
+ring-flash-attn
+timm
+decord
+einops
+einops-exts
+hydra-core
+pydub==0.25.1
+kaldiio==2.18.1
+pydantic==1.10.13
+soundfile
+tabulate
+ffmpeg<8
+# audioop-lts>=0.1.0
+librosa
+torchaudio
+soundfile

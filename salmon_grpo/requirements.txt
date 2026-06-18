@@ -1,0 +1,23 @@
+# Core
+torch
+torchaudio
+transformers==4.46.0
+peft
+accelerate
+sentencepiece
+
+# Data / audio
+numpy
+pandas
+soundfile
+librosa
+
+# Config / logging / metrics
+omegaconf
+pyyaml
+tensorboardX
+tqdm
+scikit-learn
+
+# LLM-as-a-judge (OpenRouter)
+requests
