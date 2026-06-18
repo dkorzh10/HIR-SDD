@@ -484,24 +484,6 @@ class AudioDataset(Dataset):
             "grounding_info": grounding_info,
         }
 
-def _format_prompt_for_model(prompt_template: str, model_name: str) -> str:
-    """Format a prompt template for the specific model's chat format."""
-    # Replace <Audio> placeholder with model-specific token
-    if model_name == "flamingo":
-        audio_token = "<|audio_ready|>"
-    elif model_name == "qwen_audio":
-        audio_token = "<|AUDIO|>"
-    else:
-        audio_token = ""
-    
-    # Replace the <Audio> placeholder in the template
-    prompt_text = prompt_template.replace("<Audio>", audio_token)
-    
-    # Wrap in chat format for Qwen/Flamingo
-    if model_name in ["qwen_audio", "flamingo"]:
-        return f"<|im_start|>user\n{prompt_text}<|im_end|>\n<|im_start|>assistant\n"
-    
-    return prompt_text
 
 
 def _vad_trim_waveforms(wavs: List[torch.Tensor], sample_rate: int) -> List[torch.Tensor]:
@@ -681,45 +663,6 @@ def collate_fn(batch: List[Dict[str, Any]], processor: Any = None, model_name: s
             "grounding_info": [b.get("grounding_info") for b in batch],
         }
 
-    if (model_name == "qwen_audio" or model_name == "flamingo") and processor:
-        # Build prompts from templates - prompts are required for these models
-        if not prompt_templates:
-            raise ValueError(
-                f"prompt_templates is required for {model_name}. "
-                "Configure Prompts.reasoning_prompts or Prompts.hard_label_prompts in config.yaml"
-            )
-        
-        prompts = []
-        for b in batch:
-            # Randomly select a prompt template
-            template = random.choice(prompt_templates)
-            prompt = _format_prompt_for_model(template, model_name)
-            prompts.append(prompt)
-        
-        # Try 'audios' first, then 'audio' as fallback
-        try:
-            inputs = processor(text=prompts, audios=raw_wavs, sampling_rate=16000, return_tensors="pt", padding=True)
-        except (TypeError, ValueError):
-            try:
-                inputs = processor(text=prompts, audio=raw_wavs, sampling_rate=16000, return_tensors="pt", padding=True)
-            except (TypeError, ValueError):
-                inputs = processor(prompts, raw_wavs, sampling_rate=16000, return_tensors="pt", padding=True)
-        
-        return {
-            "audio_ids": audio_ids,
-            "original_path": original_paths,
-            "input_features": inputs.get("input_features"),
-            "input_ids": inputs.get("input_ids"), 
-            "attention_mask": inputs.get("attention_mask"),
-            "feature_attention_mask": inputs.get("feature_attention_mask"),
-            "text": texts, 
-            "is_bonafide": torch.tensor([b["is_bonafide"] for b in batch]),
-            "task": [b["task"] for b in batch],
-            "reasoning": [b["reasoning"] for b in batch],
-            "grounding_info": [b.get("grounding_info") for b in batch],
-            "raw_wav": raw_wavs, # Flamingo needs raw_wav for its own processing in forward()
-            "prompts": prompts  # Pass prompts to model for reference
-        }
 
     if processor: # Fallback for Whisper/SALMON
         # Pad/Truncate to 30s usually for Whisper?

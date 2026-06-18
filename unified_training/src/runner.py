@@ -244,10 +244,6 @@ class Runner:
         conv_audio_sample_rate = None
         if model_name == "salmon":
             whisper_path = model_cfg.get("additional_kwargs", {}).get("salmon", {}).get("pretrained_ckpts", {}).get("whisper_path")
-        elif model_name == "flamingo":
-            model_path = model_cfg.get("additional_kwargs", {}).get("flamingo", {}).get("model_path")
-        elif model_name == "qwen_audio":
-            model_path = model_cfg.get("additional_kwargs", {}).get("qwen_audio", {}).get("model_path")
         elif model_name == "conv_audio_classifier":
             cc = model_cfg.get("additional_kwargs", {}).get("conv_audio_classifier", {})
             conv_audio_vad_target_sec = cc.get("target_duration_sec")
@@ -393,10 +389,6 @@ class Runner:
         conv_audio_sample_rate = None
         if model_name == "salmon":
             whisper_path = model_cfg.get("additional_kwargs", {}).get("salmon", {}).get("pretrained_ckpts", {}).get("whisper_path")
-        elif model_name == "flamingo":
-            model_path = model_cfg.get("additional_kwargs", {}).get("flamingo", {}).get("model_path")
-        elif model_name == "qwen_audio":
-            model_path = model_cfg.get("additional_kwargs", {}).get("qwen_audio", {}).get("model_path")
         elif model_name == "conv_audio_classifier":
             cc = model_cfg.get("additional_kwargs", {}).get("conv_audio_classifier", {})
             conv_audio_vad_target_sec = cc.get("target_duration_sec")
@@ -633,10 +625,6 @@ class Runner:
         conv_audio_sample_rate = None
         if model_name == "salmon":
             whisper_path = model_cfg.get("additional_kwargs", {}).get("salmon", {}).get("pretrained_ckpts", {}).get("whisper_path")
-        elif model_name == "flamingo":
-            model_path = model_cfg.get("additional_kwargs", {}).get("flamingo", {}).get("model_path")
-        elif model_name == "qwen_audio":
-            model_path = model_cfg.get("additional_kwargs", {}).get("qwen_audio", {}).get("model_path")
         elif model_name == "conv_audio_classifier":
             cc = model_cfg.get("additional_kwargs", {}).get("conv_audio_classifier", {})
             conv_audio_vad_target_sec = cc.get("target_duration_sec")

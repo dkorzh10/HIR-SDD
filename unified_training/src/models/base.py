@@ -5,9 +5,6 @@ import torch
 
 class ModelType(Enum):
     SALMON = "salmon"
-    SPEECHGPT = "speechgpt"
-    FLAMINGO = "flamingo"
-    QWEN_AUDIO = "qwen_audio"
     CONV_AUDIO_CLASSIFIER = "conv_audio_classifier"
 
 class Model(ABC, torch.nn.Module):

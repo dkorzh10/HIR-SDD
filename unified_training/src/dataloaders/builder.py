@@ -48,10 +48,7 @@ def get_dataloader(
     )
 
     processor = None
-    if model_name == "qwen_audio" and model_path:
-        from transformers import AutoProcessor
-        processor = AutoProcessor.from_pretrained(model_path, local_files_only=False)
-    elif whisper_path:
+    if whisper_path:
         try:
             from transformers import WhisperFeatureExtractor
             processor = WhisperFeatureExtractor.from_pretrained(
