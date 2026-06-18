@@ -4,8 +4,9 @@
 
 **Accepted at INTERSPEECH 2026**
 
-[![Paper](https://img.shields.io/badge/Paper-INTERSPEECH%202026-b31b1b.svg)](https://github.com/dkorzh10/HIR-SDD)
+[![arXiv](https://img.shields.io/badge/arXiv-2603.10725-b31b1b.svg)](https://arxiv.org/abs/2603.10725)
 [![Dataset](https://img.shields.io/badge/🤗%20Dataset-HIR--SDD-yellow.svg)](https://hf.co/datasets/marsianin500/HIR-SDD)
+[![Raw data](https://img.shields.io/badge/🤗%20Raw-HIR--SDD--raw-orange.svg)](https://huggingface.co/datasets/marsianin500/HIR-SDD-raw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 </div>
@@ -61,8 +62,10 @@ LoRA-tuned). The `unified_training` framework additionally implements the conven
 
 ## The dataset
 
-A human-annotated reasoning corpus released separately on Hugging Face:
-[`marsianin500/HIR-SDD`](https://hf.co/datasets/marsianin500/HIR-SDD).
+A human-annotated reasoning corpus released on Hugging Face:
+
+- [`marsianin500/HIR-SDD`](https://hf.co/datasets/marsianin500/HIR-SDD) — processed reasoning dataset (CoT traces + hard labels), ready for training/eval.
+- [`marsianin500/HIR-SDD-raw`](https://huggingface.co/datasets/marsianin500/HIR-SDD-raw) — raw human annotations (per-annotator labels, selected cue tags, free-form comments).
 
 - **41,414** audio samples (32,045 spoof / 9,369 bona fide), **124,410** annotations from
   **37** annotators after filtering, **120,258** free-form comments.
@@ -134,7 +137,10 @@ for SFT) and diversifies cues. See the paper for the full tables and reasoning e
                Iudin, Artem and Kiriukhin, Oleg and Pautov, Mikhail and
                Korzh, Dmitrii and Rogov, Oleg Y.},
   booktitle = {Proc. INTERSPEECH 2026},
-  year      = {2026}
+  year      = {2026},
+  eprint        = {2603.10725},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2603.10725}
 }
 ```
 
