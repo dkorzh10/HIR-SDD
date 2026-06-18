@@ -33,6 +33,9 @@ unified_training/
 
 ```bash
 ./manage/setup_env.sh          # optional: prepares a virtualenv
+# Install PyTorch first (torch is unpinned in requirements.txt — pick the CUDA build
+# you need from https://pytorch.org/get-started/locally/):
+pip install torch torchaudio
 pip install -r requirements.txt
 ```
 

@@ -77,15 +77,21 @@ A human-annotated reasoning corpus released on Hugging Face:
 
 ## Installation
 
-Each pipeline has its own dependencies. SALMONN/BEATs/Whisper checkpoints must be obtained
-from their original sources (see per-pipeline READMEs).
+Each pipeline has its own dependencies. **Install PyTorch first** — `torch` and
+`torchaudio` are intentionally left unpinned (the right build depends on your CUDA
+version); get them from [pytorch.org](https://pytorch.org/get-started/locally/). Then
+install the rest. SALMONN/BEATs/Whisper checkpoints must be obtained from their original
+sources (see per-pipeline READMEs).
 
 ```bash
-# unified_training
+# 1) PyTorch matching your CUDA, e.g.:
+pip install torch torchaudio
+
+# 2) unified_training
 cd unified_training
 pip install -r requirements.txt
 
-# salmon_grpo
+# 3) salmon_grpo
 cd salmon_grpo
 pip install -r requirements.txt
 ```
