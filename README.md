@@ -20,12 +20,18 @@ It combines Large Audio Language Models (LALMs) with chain-of-thought (CoT) supe
 derived from a new **human-annotated reasoning dataset**, plus grounding and
 reinforcement learning (GRPO) to keep explanations anchored to real acoustic evidence.
 
-> **Abstract.** Current SDD methods generalize poorly to new audio domains and generators
-> and offer little interpretability. We propose HIR-SDD, which fine-tunes a LALM
-> (SALMONN) with hard-label and CoT supervision, audio grounding, and GRPO, trained on a
-> novel dataset of human-annotated reasoning traces for 41k bona fide and spoof samples.
-> The result is competitive detection performance together with reasonable, human-like
-> justifications for its predictions.
+> **Abstract.** The modern generative audio models can be used by an adversary in an
+> unlawful manner, specifically, to impersonate other people to gain access to private
+> information. To mitigate this issue, speech deepfake detection (SDD) methods started to
+> evolve. Unfortunately, current SDD methods generally suffer from the lack of
+> generalization to new audio domains and generators. More than that, they lack
+> interpretability, especially human-like reasoning that would naturally explain the
+> attribution of a given audio to the bona fide or spoof class and provide human-perceptible
+> cues. In this paper, we propose HIR-SDD, a novel SDD framework that combines the strengths
+> of Large Audio Language Models (LALMs) with the chain-of-thought reasoning derived from the
+> novel proposed human-annotated dataset. Experimental evaluation demonstrates both the
+> effectiveness of the proposed method and its ability to provide reasonable justifications
+> for predictions.
 
 ## What's in this repository
 
