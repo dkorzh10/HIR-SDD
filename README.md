@@ -4,6 +4,7 @@
 
 **Accepted at INTERSPEECH 2026**
 
+[![Project page](https://img.shields.io/badge/🌐%20Project-Page-3b3b8f.svg)](https://dkorzh10.github.io/HIR-SDD/)
 [![arXiv](https://img.shields.io/badge/arXiv-2603.10725-b31b1b.svg)](https://arxiv.org/abs/2603.10725)
 [![Dataset](https://img.shields.io/badge/🤗%20Dataset-HIR--SDD-yellow.svg)](https://hf.co/datasets/marsianin500/HIR-SDD)
 [![Raw data](https://img.shields.io/badge/🤗%20Raw-HIR--SDD--raw-orange.svg)](https://huggingface.co/datasets/marsianin500/HIR-SDD-raw)
@@ -110,23 +111,6 @@ cd unified_training
 cd salmon_grpo
 python train.py --cfg-path running/configs/salmon_grpo/train_config.yaml
 ```
-
-## Results
-
-Detection performance on `Test-1-HL` (positive class = bona fide; from the paper):
-
-| Model | Train set | Accuracy | Balanced Acc. | F1 |
-|-------|-----------|:--------:|:-------------:|:--:|
-| Wav2Vec2-AASIST | Train-1-HL | 92.3 | 81.3 | 76.7 |
-| Wav2Vec2-AASIST | Train-2-HL | 92.9 | 84.0 | 76.7 |
-| SALMONN-7B | Train-1-HL | 93.4 | 89.3 | 84.5 |
-| SALMONN-7B | Train-2-HL | 94.5 | 88.6 | 85.7 |
-| SALMONN-7B | Train-2-R | 92.9 | 86.7 | 81.4 |
-| SALMONN-7B | Train-2-R + Val-1-GRPO | **93.6** | **89.6** | **85.0** |
-
-Binary-classification EER on `Test-1-HL`: **13.2%** (SALMONN-7B) vs **15.7%**
-(Wav2Vec2-AASIST). GRPO improves reasoning-trace quality (LLM-as-a-judge: 5.74 vs 5.12
-for SFT) and diversifies cues. See the paper for the full tables and reasoning examples.
 
 ## Citation
 

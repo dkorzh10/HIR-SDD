@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HIR-SDD — Towards Robust Speech Deepfake Detection via Human-Inspired Reasoning</title>
+<meta name="description" content="HIR-SDD: a framework for speech deepfake detection that pairs binary decisions with human-interpretable, audio-grounded reasoning. INTERSPEECH 2026." />
+<meta property="og:title" content="HIR-SDD — Towards Robust Speech Deepfake Detection via Human-Inspired Reasoning" />
+<meta property="og:description" content="Speech deepfake detection with human-inspired, audio-grounded reasoning. INTERSPEECH 2026." />
+<meta property="og:type" content="website" />
+<style>
+  :root{
+    --ink:#1a1a2e; --muted:#5b6072; --bg:#ffffff; --soft:#f5f6fa;
+    --line:#e6e8f0; --brand:#3b3b8f; --brand2:#7a5cc6; --accent:#b31b1b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink); background:var(--bg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px; margin:0 auto; padding:0 22px}
+  header{
+    background:linear-gradient(135deg,#f7f7fc 0%,#eef0fb 60%,#f4eefb 100%);
+    border-bottom:1px solid var(--line); padding:64px 0 40px; text-align:center;
+  }
+  .venue{
+    display:inline-block; font-size:13px; font-weight:700; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--brand2); margin-bottom:16px;
+  }
+  h1{
+    font-size:34px; line-height:1.25; margin:0 0 22px; font-weight:800;
+    letter-spacing:-.01em; color:var(--ink);
+  }
+  .authors{font-size:17px; margin:0 0 6px; color:var(--ink)}
+  .authors .corr{border-bottom:2px dotted var(--muted)}
+  .affil{font-size:13.5px; color:var(--muted); margin:0 auto 8px; max-width:760px}
+  .contact{font-size:13.5px; color:var(--muted)}
+  .links{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:26px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:999px;
+    background:var(--ink); color:#fff; font-size:14.5px; font-weight:600; border:1px solid var(--ink);
+    transition:transform .08s ease, box-shadow .15s ease;
+  }
+  .btn:hover{text-decoration:none; transform:translateY(-1px); box-shadow:0 6px 18px rgba(26,26,46,.18)}
+  .btn.alt{background:#fff; color:var(--ink)}
+  .btn.arxiv{background:var(--accent); border-color:var(--accent)}
+  .btn.hf{background:#ff9d00; border-color:#ff9d00; color:#3a2a00}
+  section{padding:42px 0; border-bottom:1px solid var(--line)}
+  h2{font-size:22px; margin:0 0 16px; font-weight:750; letter-spacing:-.01em}
+  p{margin:0 0 14px}
+  .lead{font-size:16.5px}
+  .card{background:var(--soft); border:1px solid var(--line); border-radius:14px; padding:20px 22px}
+  ol.steps{margin:0; padding-left:20px}
+  ol.steps li{margin:0 0 12px}
+  ol.steps b{color:var(--brand)}
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .fmt{
+    background:#0f1226; color:#d7dcff; border-radius:12px; padding:16px 18px; font-size:14px;
+    overflow-x:auto; margin:14px 0 0;
+  }
+  .fmt .tag{color:#8fe1c0}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-top:6px}
+  .stat{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center}
+  .stat .n{font-size:24px; font-weight:800; color:var(--brand)}
+  .stat .l{font-size:13px; color:var(--muted)}
+  pre.bib{background:#0f1226; color:#d7dcff; border-radius:12px; padding:18px; overflow-x:auto; font-size:13px; line-height:1.6}
+  footer{padding:34px 0 60px; text-align:center; color:var(--muted); font-size:13.5px}
+  footer a{color:var(--muted); text-decoration:underline}
+  @media (max-width:560px){ h1{font-size:26px} header{padding:46px 0 32px} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="venue">INTERSPEECH 2026</div>
+    <h1>Towards Robust Speech Deepfake Detection<br/>via Human-Inspired Reasoning</h1>
+    <p class="authors">
+      Artem Dvirniak, Evgeny Kushnir, Dmitrii Tarasov, Artem Iudin,
+      Oleg Kiriukhin, Mikhail Pautov,
+      <span class="corr">Dmitrii Korzh</span>, Oleg Y. Rogov
+    </p>
+    <p class="affil">
+      MIRAI &middot; HSE &middot; Applied AI Institute &middot; Fusion Brain Lab &middot;
+      MTUCI &middot; City University of Hong Kong &middot; Trusted AI Research Center, RAS
+    </p>
+    <p class="contact">Corresponding author: <a href="mailto:d.s.korzh@mtuci.ru">d.s.korzh@mtuci.ru</a></p>
+
+    <div class="links">
+      <a class="btn arxiv" href="https://arxiv.org/abs/2603.10725">📄 Paper (arXiv)</a>
+      <a class="btn alt" href="https://github.com/dkorzh10/HIR-SDD">💻 Code</a>
+      <a class="btn hf" href="https://hf.co/datasets/marsianin500/HIR-SDD">🤗 Dataset</a>
+      <a class="btn hf" href="https://huggingface.co/datasets/marsianin500/HIR-SDD-raw">🤗 Raw data</a>
+    </div>
+  </div>
+</header>
+
+<section id="abstract">
+  <div class="wrap">
+    <h2>Abstract</h2>
+    <p class="lead">
+      Modern generative audio models can be misused to impersonate people and gain access to
+      private information. Speech deepfake detection (SDD) methods have emerged to mitigate
+      this, but they generally generalize poorly to new audio domains and generators, and lack
+      human-like, interpretable reasoning that would justify why an audio is bona fide or spoof.
+      We propose <b>HIR-SDD</b>, a framework that combines Large Audio Language Models (LALMs)
+      with chain-of-thought reasoning derived from a novel human-annotated dataset. Experiments
+      show both the effectiveness of the method and its ability to provide reasonable,
+      audio-grounded justifications for its predictions.
+    </p>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <h2>Method</h2>
+    <p>HIR-SDD fine-tunes <b>SALMONN</b> (Whisper&nbsp;+&nbsp;BEATs encoders &rarr; Q-Former &rarr;
+       Vicuna-7B) so it produces a binary decision <em>and</em> a human-interpretable rationale:</p>
+    <div class="card">
+      <ol class="steps">
+        <li><b>Hard-label SFT.</b> LoRA fine-tuning to emit <code>Final Answer: Real/Fake</code>.</li>
+        <li><b>CoT SFT.</b> Training on human-derived reasoning traces to produce structured output.</li>
+        <li><b>Audio grounding.</b> Deterministic perturbations (Gaussian noise, time masking, gain)
+            push the model to anchor its reasoning to perceptible acoustic evidence.</li>
+        <li><b>GRPO.</b> Reinforcement learning with rewards for format, class correctness, and an
+            LLM judge scoring coverage / relevance / logic / helpfulness.</li>
+      </ol>
+      <pre class="fmt"><span class="tag">&lt;think&gt;</span> free-form reasoning grounded in acoustic cues <span class="tag">&lt;/think&gt;</span>
+<span class="tag">&lt;reasons&gt;</span>[ detected cue tags from the annotation taxonomy ]<span class="tag">&lt;/reasons&gt;</span>
+<span class="tag">&lt;answer&gt;</span> Real / Fake <span class="tag">&lt;/answer&gt;</span></pre>
+    </div>
+  </div>
+</section>
+
+<section id="dataset">
+  <div class="wrap">
+    <h2>Dataset</h2>
+    <p>A human-annotated reasoning corpus for SDD, released on Hugging Face — both a
+       <a href="https://hf.co/datasets/marsianin500/HIR-SDD">processed</a> version (CoT traces +
+       hard labels) and the <a href="https://huggingface.co/datasets/marsianin500/HIR-SDD-raw">raw</a>
+       per-annotator annotations.</p>
+    <div class="grid">
+      <div class="stat"><div class="n">41,414</div><div class="l">audio samples</div></div>
+      <div class="stat"><div class="n">124,410</div><div class="l">annotations</div></div>
+      <div class="stat"><div class="n">37</div><div class="l">annotators</div></div>
+      <div class="stat"><div class="n">EN / RU</div><div class="l">languages</div></div>
+    </div>
+    <p style="margin-top:16px">Curated from open SDD datasets plus newly synthesized samples, with
+       splits for binary classification or chain-of-thought training and evaluation.</p>
+  </div>
+</section>
+
+<section id="citation">
+  <div class="wrap">
+    <h2>Citation</h2>
+<pre class="bib">@inproceedings{hirsdd2026,
+  title     = {Towards Robust Speech Deepfake Detection via Human-Inspired Reasoning},
+  author    = {Dvirniak, Artem and Kushnir, Evgeny and Tarasov, Dmitrii and
+               Iudin, Artem and Kiriukhin, Oleg and Pautov, Mikhail and
+               Korzh, Dmitrii and Rogov, Oleg Y.},
+  booktitle = {Proc. INTERSPEECH 2026},
+  year      = {2026},
+  eprint        = {2603.10725},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2603.10725}
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Code and pretrained pipelines: <a href="https://github.com/dkorzh10/HIR-SDD">github.com/dkorzh10/HIR-SDD</a> &middot; Released under the MIT License.</p>
+    <p>Supported by a grant for AI research centers from the Ministry of Economic Development of the Russian Federation.</p>
+  </div>
+</footer>
+
+</body>
+</html>
